@@ -6,14 +6,14 @@
 }
 body{
     font-family: 'Segoe UI', Roboto;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #667eea 0%);
     color: #1a1a1a;
     line-height: 1.6;
 }
 /*header*/
 header{
     background-color: #fff;
-    border-bottom: 3px solid #667eea;
+    border-bottom: 3px solid #ee5a2f;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 15 rgba(0, 0, 0, 0.1);
