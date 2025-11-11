@@ -6,14 +6,14 @@
 }
 body{
     font-family: 'Segoe UI', Roboto;
-    background: linear-gradient(135deg, #667eea 0%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #1a1a1a;
     line-height: 1.6;
 }
 /*header*/
 header{
     background-color: #fff;
-    border-bottom: 3px solid #ee5a2f;
+    border-bottom: 3px solid #667eea;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 15 rgba(0, 0, 0, 0.1);
@@ -30,6 +30,11 @@ header p{
 }
 
 /*Seção de cômodos*/
+main{
+    margin: 30px auto;
+    padding: 0 15px;
+    max-width: 1200px;
+}
 
 .comodos-section{
     margin-bottom: 40px; 
@@ -50,6 +55,7 @@ header p{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     color:#fff;
     max-width: 300px;
+    min-width: 250px;
     font-weight: 500;
 }
 .dispositivo-card[data-type="lampada"]{
@@ -73,4 +79,30 @@ header p{
 }
 .dispositivo-card[data-type="irrigacao"]{
     background: linear-gradient(135deg, #45b4d4 0%, #2d8aa2 100%);
+}
+.dispositivo-card div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.dispositivo-card p{
+    font-size: 28px;
+}
+.dispositivo-title{
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: #fff;
+}
+.dispositivo-status{
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+    font-weight: 500;
+    justify-content: space-around;
+}
+.dispositivo-flex{
+    display: flex;
+    justify-content: space-around;
 }
