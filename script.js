@@ -35,94 +35,6 @@ const irVarandaTexto = document.getElementById("ir-varanda-texto")
 const lampVarandaTexto = document.getElementById("")
 const varVarandaTexto = document.getElementById("var-varanda-texto")
 
-//#### Alterando estado dos dispositivos
-
-cortSalaInput.addEventListener("change", () => {
-    const aberta = cortSalaInput.checked === true;
-    if (aberta === true) {
-        console.log("cortina aberta");
-        cortSalaTexto.innerHTML = "Aberta"
-    } else {
-        console.log("Cortina fechada")
-        cortSalaTexto.innerHTML = "fechada"
-    }
-});
-
-portSalaInput.addEventListener("change", () => {
-    const aberto = portSalaInput.checked === true;
-    if (aberto === true) {
-        console.log("porta aberta");
-        portSalaTexto.innerHTML = "aberta";
-    } else {
-        portSalaTexto.innerHTML = "fechada";
-    }
-})
-
-exausCozinhaInput.addEventListener("change", () => {
-    const ligado = exausCozinhaInput.checked === true;
-    if (ligado === true) {
-        console.log("Exaustor ligado");
-        exausCozinhaTexto.innerHTML = "Ligado"
-    } else {
-        exausCozinhaTexto.innerHTML = "Desligado"
-    }
-})
-
-lampCozinhaInput.addEventListener("change", () => {
-    const ligado = lampCozinhaInput.checked === true;
-    if (ligado === true) {
-        console.log("Lampada ligado");
-        lampCozinhaTexto.innerHTML = "Ligado"
-    } else {
-        lampCozinhaTexto.innerHTML = "Desligado"
-    }
-});
-
-
-lampVarandaInput.addEventListener("change", () => {
-    const ligado = lampVarandaInput.checked === true;
-    if (ligado === true) {
-        lampIluminacaoTexto.innerHTML = "Ligado";
-    } else {
-        lampIluminacaoTexto.innerHTML = "Desligado"
-    }
-});
-
-varVarandaInput.addEventListener("change", () => {
-    const aberto = varVarandaInput.checked === true;
-    if (aberto === true) {
-        // console.log("Varal aberto");
-        varVarandaTexto.innerHTML = "aberto";
-    } else {
-        // console.log("varal fechado");
-        varVarandaTexto.innerHTML = "Fechado";
-    }
-});
-
-portVarandaInput.addEventListener("change", () => {
-    const aberto = portVarandaInput.checked === true;
-    if (aberto === true) {
-        //console.log("porta aberta");
-        portVarandTexto.innerHTML = "Aberto"
-    } else {
-        console.log("porta fechada");
-        portVarandTexto.innerHTML = "Fechado"
-    }
-});
-
-irVarandaInput.addEventListener("change", () => {
-    const aberto = irVarandaInput.checked === true;
-    if (aberto === true) {
-        console.log("porta aberta");
-        irVarandaTexto.innerHTML = "Aberto"
-    } else {
-        console.log("porta fechada");
-        irVarandaTexto.innerHTML = "Fechado"
-    }
-});
-
-
-
 //### Chamando um evento JS do tipo "DOMContentLoard", que é o evento que acontece
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Página carregada com sucesso! ✅...Conectado ao Mosquitto!");
@@ -166,6 +78,115 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             // console.log("Lâmpada desligada");
             lampSalaTexto.innerHTML = "Deligado";
+        }
+    });
+
+    //#### Alterando estado dos dispositivos
+
+    cortSalaInput.addEventListener("change", () => {
+        const TOPICO_CORT_SALA = 'casa-ricardo/sala/cort';
+
+        const aberta = cortSalaInput.checked === true;
+        if (aberta === true) {
+            //console.log("cortina aberta");
+            cliente.publish(TOPICO_CORT_SALA, 'Ligado')
+            cortSalaTexto.innerHTML = "Aberta"
+        } else {
+            console.log("Cortina fechada")
+            cortSalaTexto.innerHTML = "fechada"
+        }
+    });
+
+    portSalaInput.addEventListener("change", () => {
+        const TOPICO_PORT_SALA = 'casa-ricardo/sala/port';
+
+        const aberto = portSalaInput.checked === true;
+        if (aberto === true) {
+            //console.log("porta aberta");
+            cliente.publish(TOPICO_PORT_SALA, 'Aberta')
+            portSalaTexto.innerHTML = "aberta";
+        } else {
+            portSalaTexto.innerHTML = "fechada";
+        }
+    });
+
+    exausCozinhaInput.addEventListener("change", () => {
+        const TOPICO_EXAUS_COZINHA = 'casa-ricardo/cozinha/exaus';
+
+        const ligado = exausCozinhaInput.checked === true;
+        if (ligado === true) {
+            cliente.publish = (TOPICO_EXAUS_COZINHA, 'Ligado')
+            //console.log("Exaustor ligado");
+            exausCozinhaTexto.innerHTML = "Ligado"
+        } else {
+            exausCozinhaTexto.innerHTML = "Desligado"
+        }
+    })
+
+    lampCozinhaInput.addEventListener("change", () => {
+        const TOPICO_LAMP_COZINHA = 'casa-ricardo/cozinha/lamp';
+
+        const ligado = lampCozinhaInput.checked === true;
+        if (ligado === true) {
+            cliente.publish = (TOPICO_LAMP_COZINHA, 'Ligado')
+            //console.log("Lampada ligado");
+            lampCozinhaTexto.innerHTML = "Ligado"
+        } else {
+            lampCozinhaTexto.innerHTML = "Desligado"
+        }
+    });
+
+    lampVarandaInput.addEventListener("change", () => {
+        const TOPICO_LAMP_VARANDA = 'casa-ricardo/varanda/lamp';
+
+        const ligado = lampVarandaInput.checked === true;
+        if (ligado === true) {
+            cliente.publish = (TOPICO_LAMP_VARANDA, 'Ligado')
+            lampIluminacaoTexto.innerHTML = "Ligado";
+        } else {
+            lampIluminacaoTexto.innerHTML = "Desligado"
+        }
+    });
+
+    varVarandaInput.addEventListener("change", () => {
+        const TOPICO_VAR_VARANDA = 'casa-ricardo/varanda/var';
+
+        const aberto = varVarandaInput.checked === true;
+        if (aberto === true) {
+            cliente.publish(TOPICO_VAR_VARANDA, 'Aberto');
+            // console.log("Varal aberto");
+            varVarandaTexto.innerHTML = "aberto";
+        } else {
+            // console.log("varal fechado");
+            varVarandaTexto.innerHTML = "Fechado";
+        }
+    });
+
+    portVarandaInput.addEventListener("change", () => {
+        const TOPICO_PORT_VARANDA = 'casa-ricardo/varanda/port';
+
+        const aberto = portVarandaInput.checked === true;
+        if (aberto === true) {
+            cliente.publish(TOPICO_PORT_VARANDA, 'Aberto')
+            //console.log("porta aberta");
+            portVarandTexto.innerHTML = "Aberto"
+        } else {
+            console.log("porta fechada");
+            portVarandTexto.innerHTML = "Fechado"
+        }
+    });
+
+    irVarandaInput.addEventListener("change", () => {
+        const TOPICO_IR_VARANDA = 'casa-ricardo/varanda/ir';
+
+        const aberto = irVarandaInput.checked === true;
+        if (aberto === true) {
+            cliente.publish(TOPICO_IR_VARANDA, 'Aberto');
+            //console.log("porta aberta");
+            irVarandaTexto.innerHTML = "Aberto"
+        } else {
+            console.log("porta fechada");
+            irVarandaTexto.innerHTML = "Fechado"
         }
     });
 
