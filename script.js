@@ -13,6 +13,7 @@ const clienteId = 'web-casa-inteligente-ricardo';
 //##### Variaveis dos dispositivos
 const lampSalaInput = document.getElementById("lamp-sala");
 const lampVarandaInput = document.getElementById("lamp-varanda");
+const varVarandaInput = document.getElementById("var-varanda")
 
 const lampSalaTexto = document.getElementById("lamp-sala-texto");
 const cortSalaTexto = document.getElementById("cort-sala-texto")
@@ -79,6 +80,10 @@ lampVarandaInput.addEventListener("change", () => {
     }else{
         lampCozinhaTexto.innerHTML = "Desligado"
     }
+});
+
+varVarandaInput.addEventListener("change", () => {
+    
 });
 
 
